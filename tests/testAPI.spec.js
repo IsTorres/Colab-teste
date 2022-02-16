@@ -62,7 +62,7 @@ describe('Testa se a API está retornando alguma coisa', () => {
   })
   
   test('verifica o usuario atraves da função fetchAPI', async () => {
-    API.fetchURL().then((user) => {
+    API.fetchAPI().then((user) => {
       console.log(user, 'test');
       expect(user.gender).toEqual('female');
     });
