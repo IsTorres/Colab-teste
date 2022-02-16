@@ -1,7 +1,7 @@
 import API from "../services/fetchAPI";
 
 describe("Testa se a API está retornando alguma coisa", () => {
-  API.fetchURL = jest.fn(async () => {
+  const mock = API.fetchURL = jest.fn(async () => {
     const user = {
       gender: "female",
       name: {
@@ -63,7 +63,7 @@ describe("Testa se a API está retornando alguma coisa", () => {
   });
 
   test("verifica o usuario atraves da função fetchAPI", async () => {
-    API.fetchAPI().then((user) => {
+    mock().then((user) => {
       console.log(user, "test");
       expect(user.gender).toEqual("female");
     });
