@@ -17,19 +17,15 @@ describe("Teste da pagina", () => {
   describe("teste dos cards de usuarios", () => {
     it("verifica card de usuario retraido", () => {
       cy.get("#basic-info").children().should("have.length", 3);
-      cy.get("#basic-info").find("h3").not("null");
     });
 
     it("verifica #full-info", () => {
+      cy.get("#full-info").should("not.exist");
+      cy.get("#btn-more-info").click();
+      cy.get("#full-info").should("be.visible");
       cy.get("#full-info").find("div").should("have.length", 3);
-    });
-
-    it("verifica #location-info", () => {
-      cy.get("#location-info").contains("Street");
-      cy.get("#location-info").contains("City");
-      cy.get("#location-info").contains("State");
-      cy.get("#location-info").contains("Country");
-      cy.get("#location-info").contains("PostCode");
+      cy.get("#btn-more-info").click();
+      cy.get("#full-info").should("not.exist");
     });
   });
 });
