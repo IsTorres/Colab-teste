@@ -25,7 +25,7 @@ export default function UsersList() {
           <li key={ index }>
             <CardUser
               userData={user}
-            />;
+            />
           </li>
         ))
       }
