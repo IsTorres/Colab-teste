@@ -4,7 +4,7 @@ import UsersList from "../components/UsersList";
 
 export default function index() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <UsersList />
     </div>

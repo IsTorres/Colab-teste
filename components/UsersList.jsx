@@ -21,21 +21,23 @@ export default function UsersList() {
   const loading = <span>Loading</span>;
 
   return (
-    <List
-      sx={{
-        width: "100%",
-        maxWidth: 360,
-        bgcolor: "background.paper",
-      }}
-    >
-      {!listUsers.results
-        ? loading
-        : listUsers.results.map((user, index) => (
-            <ListItem alignItems="flex-start" key={index}>
-              <CardUser userData={user} />
-              <Divider />
-            </ListItem>
-          ))}
-    </List>
+    <>
+      <List
+        className="grid"
+        sx={{
+          width: "100%"
+        }}
+      >
+        {!listUsers.results
+          ? loading
+          : listUsers.results.map((user, index) => (
+              <ListItem alignItems="flex-start" key={index}>
+                <CardUser userData={user} />
+                <Divider />
+              </ListItem>
+            ))}
+      </List>
+
+    </>
   );
 }
