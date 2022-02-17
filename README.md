@@ -2,7 +2,7 @@
 
 ### Link do app: https://colab-teste-istorres.vercel.app/
 
-## Para rodar o projeto:
+## Para rodar o projeto localmente:
 1. Clone o repositório
   * `git clone https://github.com/istorres/Colab-teste.git`.
 2. Entre na pasta do repositório que você acabou de clonar:
