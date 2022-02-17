@@ -1,4 +1,12 @@
 import React, { useState } from "react";
+import Button from "@mui/material/Button";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Divider from "@mui/material/Divider";
 
 export default function CardUser(props) {
   const [visible, setVisible] = useState("false");
@@ -6,43 +14,68 @@ export default function CardUser(props) {
   const { name, location, login, dob } = userData;
   const nameUser = `${name.title} ${name.first} ${name.last}`;
 
-
   return (
-    <>
-      <section id="basic-info">
-        <img src={userData.picture.large} />
-        <h3>{`Name: ${nameUser}`}</h3>
-        <h4>{`Email: ${userData.email}`}</h4>
-      </section>
-
-      <button id="btn-more-info" onClick={() => setVisible(!visible)}>
-        {visible ? "More Info" : "Less Info"}
-      </button>
-      { !visible && (
-        <section id="full-info">
-          <div id="location-info">
-            <h3>Location</h3>
-            <p>{`Street: ${location.street.name}, ${location.street.number}`}</p>
-            <p>{`City: ${location.city}`}</p>
-            <p>{`State: ${location.state}`}</p>
-            <p>{`Country: ${location.country}`}</p>
-            <p>{`PostCode: ${location.postcode}`}</p>
+    <Card sx={{ maxWidth: 345 }} id="user">
+      <CardContent id="basic-info">
+        <ListItemAvatar>
+          <Avatar src={userData.picture.large} />
+        </ListItemAvatar>
+        <ListItemText
+          primary={`Name: ${nameUser}`}
+          secondary={
+            <React.Fragment>
+              <Typography
+                sx={{ display: "inline" }}
+                component="span"
+                variant="body2"
+                color="text.primary"
+              >
+                {`Email: ${userData.email}`}
+              </Typography>
+            </React.Fragment>
+          }
+        />
+        <Button
+          variant="contained"
+          id="btn-more-info"
+          onClick={() => setVisible(!visible)}
+        >
+          {visible ? "More Info" : "Less Info"}
+        </Button>
+        {!visible && (
+          <div id="full-info">
+            <div id="location-info">
+              <Typography variant="h5">Location</Typography>
+              <Typography
+                paragraph
+              >{`Street: ${location.street.name}, ${location.street.number}`}</Typography>
+              <Typography paragraph>{`City: ${location.city}`}</Typography>
+              <Typography paragraph>{`State: ${location.state}`}</Typography>
+              <Typography
+                paragraph
+              >{`Country: ${location.country}`}</Typography>
+              <Typography
+                paragraph
+              >{`PostCode: ${location.postcode}`}</Typography>
+            </div>
+            <Divider />
+            <div id="login-info">
+              <Typography variant="h5">Login Info</Typography>
+              <Typography paragraph>{`Username: ${login.username}`}</Typography>
+              <Typography paragraph>{`User ID: ${login.uuid}`}</Typography>
+            </div>
+            <Divider />
+            <div id="personal-info">
+              <Typography variant="h5">Personal Info</Typography>
+              <Typography paragraph>{`Birth date: ${dob.date}`}</Typography>
+              <Typography paragraph>{`Age: ${dob.age}`}</Typography>
+              <Typography paragraph>{`Phone: ${userData.phone}`}</Typography>
+              <Typography paragraph>{`Cell: ${userData.cell}`}</Typography>
+              <Typography paragraph>{`Gender: ${userData.gender}`}</Typography>
+            </div>
           </div>
-          <div id="login-info">
-            <h3>Login Info</h3>
-            <p>{`Username: ${login.username}`}</p>
-            <p>{`User ID: ${login.uuid}`}</p>
-          </div>
-          <div id="personal-info">
-            <h3>Personal Info</h3>
-            <p>{`Birth date: ${dob.date}`}</p>
-            <p>{`Age: ${dob.age}`}</p>
-            <p>{`Phone: ${userData.phone}`}</p>
-            <p>{`Cell: ${userData.cell}`}</p>
-            <p>{`Gender: ${userData.gender}`}</p>
-          </div>
-        </section>
-      )}
-    </>
+        )}
+      </CardContent>
+    </Card>
   );
 }

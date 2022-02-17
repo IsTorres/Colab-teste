@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import API from "../services/fetchAPI";
 import CardUser from "../components/CardUser";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import Divider from "@mui/material/Divider";
 
 export default function UsersList() {
   const [listUsers, setListUsers] = useState([]);
@@ -18,17 +21,21 @@ export default function UsersList() {
   const loading = <span>Loading</span>;
 
   return (
-    <ul>
-      { !listUsers.results
+    <List
+      sx={{
+        width: "100%",
+        maxWidth: 360,
+        bgcolor: "background.paper",
+      }}
+    >
+      {!listUsers.results
         ? loading
         : listUsers.results.map((user, index) => (
-          <li key={ index }>
-            <CardUser
-              userData={user}
-            />
-          </li>
-        ))
-      }
-    </ul>
+            <ListItem alignItems="flex-start" key={index}>
+              <CardUser userData={user} />
+              <Divider />
+            </ListItem>
+          ))}
+    </List>
   );
 }
