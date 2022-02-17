@@ -19,7 +19,7 @@ export default function UsersList() {
 
   return (
     <ul>
-      {!listUsers.results
+      { !listUsers.results
         ? loading
         : listUsers.results.map((user, index) => (
           <li key={ index }>

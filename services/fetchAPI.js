@@ -1,5 +1,5 @@
 export const API_URL = "https://randomuser.me/api/?results=8";
-const https = require('https');
+const https = require("https");
 
 const fetchAPI = () =>
   new Promise(function (resolve, reject) {
