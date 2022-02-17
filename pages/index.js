@@ -1,7 +1,12 @@
-import React from 'react'
+import React from "react";
+import Header from "../components/Header";
+import UsersList from "../components/UsersList";
 
 export default function index() {
   return (
-    <div>index</div>
-  )
+    <div className="container">
+      <Header />
+      <UsersList />
+    </div>
+  );
 }
